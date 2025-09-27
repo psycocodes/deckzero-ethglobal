@@ -1,35 +1,20 @@
-'use client';
+"use client";
+import React from "react";
+import { wagmiConfig } from "@/lib/web";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { WagmiConfig } from "wagmi";
 
-import React, { useEffect } from 'react';
-import { WagmiProvider } from 'wagmi';
-import { mainnet } from 'wagmi/chains';
-import { createWeb3Modal } from '@web3modal/wagmi/react';
-import { wagmiConfig } from '@/lib/web';
+const queryClient = new QueryClient();
 
-type Props = {
-  children: React.ReactNode;
-};
-
-const projectId = process.env.WALLET_CONNECT_PROJECT_ID || '';
-
-
-export default function Web3Providers({ children }: Props) {
-  useEffect(() => {
-    if (!projectId) return;
-    createWeb3Modal({
-      wagmiConfig,
-      projectId,
-      enableAnalytics: false,
-      defaultChain: mainnet,
-      themeMode: 'dark',
-    });
-  }, []);
+export default function Providers({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
 
   return (
-    <WagmiProvider config={wagmiConfig}>
-      {children}
-    </WagmiProvider>
+    <WagmiConfig config={wagmiConfig}>
+      <QueryClientProvider client={queryClient}>
+        {mounted && children}
+      </QueryClientProvider>
+    </WagmiConfig>
   );
 }
-
-

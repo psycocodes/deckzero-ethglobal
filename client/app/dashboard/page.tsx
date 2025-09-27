@@ -5,8 +5,11 @@ import { useRouter } from 'next/navigation';
 import { ArrowLeft, Wallet, Copy, Check, ExternalLink, Gamepad2, Trophy, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import { useAccount, useDisconnect } from 'wagmi';
+import { useAuthRedirect } from '@/lib/useAuthRedirect';
 
 export default function Dashboard() {
+  useAuthRedirect(); 
+
   const router = useRouter();
   const { address, isConnected } = useAccount();
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
@@ -14,7 +17,7 @@ export default function Dashboard() {
 
 
   const { disconnect } = useDisconnect();
-
+ 
 
   useEffect(() => {
     if (!isConnected) {
