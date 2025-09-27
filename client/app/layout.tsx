@@ -11,7 +11,7 @@ const calebMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Cards of Fortune",
+  title: "DeckZero",
   description: "The Web3 game that decides your fate",
 };
 
