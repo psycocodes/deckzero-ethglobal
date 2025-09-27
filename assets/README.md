@@ -4,5 +4,6 @@
 
 -Joker smiling sprite animated
 -joker card
+-joker ctaching dialogue box
 
 
