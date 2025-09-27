@@ -4,13 +4,17 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Wallet, Copy, Check, ExternalLink, Gamepad2, Trophy, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
-import { useAccount } from 'wagmi';
+import { useAccount, useDisconnect } from 'wagmi';
 
 export default function Dashboard() {
   const router = useRouter();
   const { address, isConnected } = useAccount();
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+
+
+  const { disconnect } = useDisconnect();
+
 
   useEffect(() => {
     if (!isConnected) {
@@ -43,7 +47,7 @@ export default function Dashboard() {
   };
 
   const disconnectWallet = () => {
-    router.push('/');
+    disconnect();
   };
 
   if (!walletAddress) {
