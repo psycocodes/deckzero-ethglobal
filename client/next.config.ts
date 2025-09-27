@@ -3,12 +3,10 @@ const nextConfig = {
   async headers() {
     return [
       {
-        // Apply these headers to all routes in your application.
         source: '/:path*',
         headers: [
           {
             key: 'Content-Security-Policy',
-            // This is a comprehensive policy covering Web3Modal, WalletConnect, Coinbase, and common RPCs.
             value: [
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://*.walletconnect.com https://api.web3modal.org https://static.cloudflareinsights.com",

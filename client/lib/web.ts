@@ -1,7 +1,8 @@
 import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 import { mainnet, arbitrum } from 'wagmi/chains'
 
-const projectId = process.env.WALLET_CONNECT_PROJECT_ID || 'YOUR_PROJECT_ID'
+const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || '' 
+
 
 const metadata = {
   name: 'DeckZero',
