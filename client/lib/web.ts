@@ -6,7 +6,7 @@ const projectId = process.env.WALLET_CONNECT_PROJECT_ID || 'YOUR_PROJECT_ID'
 const metadata = {
   name: 'DeckZero',
   description: 'A Web3 Alternate Reality Game',
-  url: 'https://deckzero.vercel.app',
+    url: typeof window !== 'undefined' ? window.location.origin : 'https://deckzero.vercel.app',
   icons: ['https://avatars.githubusercontent.com/u/37784886']
 }
 
