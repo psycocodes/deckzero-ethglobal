@@ -1,0 +1,41 @@
+{
+	"emulators": {
+		"default": {
+			"port": 3569,
+			"serviceAccount": "emulator-account"
+		}
+	},
+	"contracts": {
+		"GameRewards": "./contracts/GameRewards-v2.cdc",
+		"TokenRewards": "./contracts/TokenRewards-v2.cdc"
+	},
+	"networks": {
+		"emulator": "127.0.0.1:3569",
+		"testnet": "access.devnet.nodes.onflow.org:9000"
+	},
+	"accounts": {
+		"emulator-account": {
+
+			"address": "0xf8d6e0586b0a20c7",
+			"key": "ae1232de1b6625d8a4d97dce3655da8ce832d9dd54c3041205e5cb3e027dcbb1"
+		},
+		"testnet-account": {
+			"address": "0x98610698377fd923",
+			"key": "14706f456d7c8ef5dc8b12ddb4ecb2c020439c2cfc529dbcdec2f07b83a6d193"
+		}
+	},
+	"deployments": {
+		"emulator": {
+			"emulator-account": [
+				"GameRewards",
+				"TokenRewards"
+			]
+		},
+		"testnet": {
+			"testnet-account": [
+				"GameRewards",
+				"TokenRewards"
+			]
+		}
+	}
+}

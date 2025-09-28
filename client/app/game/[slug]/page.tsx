@@ -1,4 +1,4 @@
-import GameWrapper from "@/components/GameWrapper";
+import EnhancedGameWrapper from "@/components/EnhancedGameWrapper";
 import type { Metadata } from "next";
 import { use } from "react";
 
@@ -12,8 +12,8 @@ export async function generateMetadata(props: {
   const gameId = (await props.params).slug;
 
   return {
-    title: `Play Game - ${gameId}`,
-    description: `Enjoy playing game ${gameId}.`,
+    title: `Play ${gameId} - DeckZero`,
+    description: `Play ${gameId} and earn Flow rewards and ENS badges!`,
   };
 }
 
@@ -25,7 +25,7 @@ export default function GamePage(props: {
   return (
     <main className="w-screen h-screen bg-black">
       <div id="unity-container" className="w-full h-full">
-        <GameWrapper gameId={gameId} />
+        <EnhancedGameWrapper gameId={gameId} />
       </div>
     </main>
   );
